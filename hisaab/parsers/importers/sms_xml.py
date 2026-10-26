@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -17,7 +17,7 @@ INBOX = "1"
 
 def epoch_ms_to_local(ms: int | str, tz: ZoneInfo = IST) -> datetime:
     """Convert Android's millisecond timestamp to a naive local (IST by default) datetime."""
-    dt = datetime.fromtimestamp(int(ms) / 1000, tz=UTC).astimezone(tz)
+    dt = datetime.fromtimestamp(int(ms) / 1000, tz=timezone.utc).astimezone(tz)
     return dt.replace(tzinfo=None, microsecond=0)
 
 
