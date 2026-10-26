@@ -24,6 +24,7 @@ MERCHANTS = [
     ("BigBasket", 400, 2200),
     ("BookMyShow", 250, 900),
 ]
+DEMO_VPA = "me.demo@okicici"
 FRIENDS = [
     ("ANANYA RAO", "ananya.r@okaxis"),
     ("KABIR SETHI", "kabir.s@ybl"),
@@ -95,7 +96,7 @@ def seed_demo(session: Session, seed: int = 7, end: date | None = None) -> dict:
     """Load demo SMS, a Goa trip with three friends, and one auto-detected repayment."""
     end = end or date.today()
     report = import_messages(session, demo_messages(seed, end=end))
-    trip = gsvc.create_group(session, "Goa trip", "trip", me="Me")
+    trip = gsvc.create_group(session, "Goa trip", "trip", me="Me", me_vpa=DEMO_VPA)
     me = gsvc.get_me(session, trip.id).id
     ids = [me]
     for name, vpa in FRIENDS:
@@ -125,7 +126,7 @@ def seed_demo(session: Session, seed: int = 7, end: date | None = None) -> dict:
             when + timedelta(days=3), debtor.name.upper(), debts[0].amount_paise // 100
         )
         _, proposals = gsvc.import_and_propose(session, [sms])
-    flat = gsvc.create_group(session, "Flat 302", "flat")
+    flat = gsvc.create_group(session, "Flat 302", "flat", me_vpa=DEMO_VPA)
     flat_me = gsvc.get_me(session, flat.id).id
     roomie = gsvc.add_member(session, flat.id, "Kabir Sethi", "kabir.s@ybl").id
     gsvc.add_expense(session, flat.id, "Wi-Fi", 99900, roomie, [flat_me, roomie])
