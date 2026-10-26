@@ -28,7 +28,9 @@ CREDIT = (
 
 @pytest.fixture
 def ctx(tmp_path):
-    return make_ctx(tmp_path / "h.db")
+    context = make_ctx(tmp_path / "h.db")
+    yield context
+    context.engine.dispose()
 
 
 @pytest.fixture
@@ -52,6 +54,7 @@ class TestCommon:
         demo = make_ctx(tmp_path / "x.db", demo=True)
         demo.save(demo.settings)
         assert not (tmp_path / "settings.json").exists()
+        demo.engine.dispose()
 
     def test_make_pipeline_respects_settings(self, ctx):
         st = ctx.settings
@@ -380,6 +383,7 @@ class TestApp:
         app = build_app(demo)
         md = [b.value for b in app.blocks.values() if isinstance(b, gr.Markdown)]
         assert any("Demo mode" in (v or "") for v in md)
+        demo.engine.dispose()
 
     def test_launch_kwargs_safe_defaults(self):
         kw = launch_kwargs()
