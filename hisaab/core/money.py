@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from decimal import ROUND_HALF_UP, Decimal, InvalidOperation
 
-_CURRENCY = re.compile(r"(?i)(?:rs\.?|inr|₹)\s*")
+_CURRENCY = re.compile(r"(?i)(?:(?:rs|inr)\.?|₹)\s*")
 _NUMBER = re.compile(r"\d[\d,]*(?:\.\d+)?|\.\d+")
 
 
