@@ -56,7 +56,11 @@ def cmd_anonymize(src: Path, output: Path | None) -> int:
 def cmd_backup(dest: Path, db: Path | None) -> int:
     from hisaab.core.db import backup_db, get_engine
 
-    out = backup_db(get_engine(db), dest)
+    engine = get_engine(db)
+    try:
+        out = backup_db(engine, dest)
+    finally:
+        engine.dispose()
     print(f"Backup written to {out}")
     return 0
 

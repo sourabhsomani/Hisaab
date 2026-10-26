@@ -93,8 +93,11 @@ def backup_db(engine: Engine, dest: str | Path) -> Path:
     raw = engine.raw_connection()
     try:
         src = raw.driver_connection
-        with sqlite3.connect(dest) as out:
+        out = sqlite3.connect(dest)  # sqlite3's context manager commits but never closes
+        try:
             src.backup(out)
+        finally:
+            out.close()
     finally:
         raw.close()
     return dest

@@ -52,6 +52,7 @@ class TestDemo:
             assert len(s.exec(select(m.Group)).all()) == 2
             trip = gsvc.list_groups(s)[-1]
             assert all(ln.link for ln in gsvc.payment_lines(s, trip.id))
+        eng.dispose()
 
 
 class TestCli:
@@ -88,7 +89,9 @@ class TestCli:
 
     def test_backup(self, tmp_path, capsys):
         db = tmp_path / "h.db"
-        init_db(get_engine(db))
+        eng = get_engine(db)
+        init_db(eng)
+        eng.dispose()
         assert cli.main(["backup", str(tmp_path / "copy.db"), "--db", str(db)]) == 0
         assert (tmp_path / "copy.db").exists() and "Backup written" in capsys.readouterr().out
 

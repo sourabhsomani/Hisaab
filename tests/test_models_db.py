@@ -35,6 +35,7 @@ class TestEngine:
         init_db(eng)
         assert path.exists()
         assert sqlite_path(eng) == str(path)
+        eng.dispose()
 
     def test_memory_has_no_path(self, engine):
         assert sqlite_path(engine) is None
@@ -128,8 +129,11 @@ class TestBackup:
         with session_scope(engine) as s:
             s.add(m.Group(name="Trip"))
         out = backup_db(engine, tmp_path / "b" / "backup.db")
-        with sqlite3.connect(out) as conn:
+        conn = sqlite3.connect(out)
+        try:
             assert conn.execute('select name from "group"').fetchone() == ("Trip",)
+        finally:
+            conn.close()
 
 
 class TestDataLoader:
