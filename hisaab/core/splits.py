@@ -132,6 +132,4 @@ def compute_split(
         return split_percentage(total_paise, picked)
     if kind is SplitType.SHARES:
         return split_shares(total_paise, picked)
-    return split_adjustment(
-        total_paise, participants, {k: int(v) for k, v in picked.items() if v}
-    )
+    return split_adjustment(total_paise, participants, {k: int(v) for k, v in picked.items() if v})

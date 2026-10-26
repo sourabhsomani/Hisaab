@@ -214,6 +214,18 @@ class TestGroupsTab:
         msg, _ = groups_tab.handle_create_group(ctx, "", "trip", "Me")
         assert msg.startswith("⚠️")
 
+    def test_create_group_with_upi(self, ctx):
+        msg, upd = groups_tab.handle_create_group(ctx, "Flat", "flat", "Me", "me@okicici")
+        assert msg.startswith("✅")
+        assert groups_tab.members_table(ctx, upd["value"]).iloc[0]["UPI ID"] == "me@okicici"
+
+    def test_update_member(self, ctx, trip):
+        gid, (me, rahul, priya) = trip
+        msg, df = groups_tab.handle_update_member(ctx, gid, me, "me@okicici", "SOURABH S")
+        assert msg.startswith("✅") and df.iloc[0]["UPI ID"] == "me@okicici"
+        assert groups_tab.handle_update_member(ctx, gid, None, "", "")[0].startswith("⚠️")
+        assert groups_tab.handle_update_member(ctx, gid, me, "bad", "")[0].startswith("⚠️")
+
     def test_add_member_errors(self, ctx, trip):
         gid, _ = trip
         assert groups_tab.handle_add_member(ctx, None, "x", "", "")[0].startswith("⚠️")

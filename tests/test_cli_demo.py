@@ -50,6 +50,8 @@ class TestDemo:
             (p,) = gsvc.list_settlements(s, status=m.SettlementStatus.PROPOSED)
             assert p.method == m.SettlementMethod.UPI_SMS
             assert len(s.exec(select(m.Group)).all()) == 2
+            trip = gsvc.list_groups(s)[-1]
+            assert all(ln.link for ln in gsvc.payment_lines(s, trip.id))
 
 
 class TestCli:
