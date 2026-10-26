@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<smses count="4">
+  <sms address="AX-HDFCBK" date="1729780200000" type="1"
+       body="Sent Rs.450.00 from HDFC Bank A/c **1234 to RAHUL KUMAR on 24/10/26. Ref 429812345678." />
+  <sms address="+919876543210" date="1729780300000" type="1" body="Hi! paid Rs.5" />
+  <sms address="JD-SBIUPI" date="1729780400000" type="2" body="sent message, not inbox" />
+  <sms address="JD-SBIUPI" type="1" body="A/C X5678 debited by 10.00" />
+</smses>
