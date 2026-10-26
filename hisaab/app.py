@@ -48,9 +48,12 @@ def build_app(ctx: Ctx) -> gr.Blocks:
     return app
 
 
-def launch_kwargs(host: str = "127.0.0.1", port: int = 7860, password: str | None = None) -> dict:
-    """Safe launch options: never a share link; any non-loopback host needs a password."""
-    if host not in ("127.0.0.1", "localhost", "::1") and not password:
+def launch_kwargs(
+    host: str = "127.0.0.1", port: int = 7860, password: str | None = None, demo: bool = False
+) -> dict:
+    """Safe launch options: never a share link; any non-loopback host needs a password,
+    except the synthetic-data demo (e.g. on Hugging Face Spaces)."""
+    if host not in ("127.0.0.1", "localhost", "::1") and not password and not demo:
         raise ValueError("exposing Hisaab beyond this machine needs --password")
     kwargs: dict = {"server_name": host, "server_port": port, "share": False}
     if password:
