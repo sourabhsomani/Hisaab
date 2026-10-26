@@ -15,7 +15,7 @@ from hisaab.core.splits import (
 )
 
 totals = st.integers(min_value=1, max_value=10**10)
-member_lists = st.lists(st.integers(min_value=1, max_value=50), min_size=1, max_size=12, unique=True)
+member_lists = st.lists(st.integers(1, 50), min_size=1, max_size=12, unique=True)
 
 
 class TestLargestRemainder:

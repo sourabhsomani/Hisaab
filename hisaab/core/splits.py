@@ -103,10 +103,7 @@ def split_adjustment(
     remainder = total_paise - adj_sum
     if remainder < 0:
         raise SplitError("adjustments exceed the total")
-    if remainder == 0:
-        base = dict.fromkeys(members, 0)
-    else:
-        base = split_equal(remainder, members)
+    base = split_equal(remainder, members) if remainder else dict.fromkeys(members, 0)
     result = {m: base[m] + adjustments.get(m, 0) for m in members}
     if any(v < 0 for v in result.values()):
         raise SplitError("an adjustment makes a share negative")
