@@ -61,7 +61,7 @@ class TestSimplifyDebts:
         a = simplify_debts({"A": 100, "B": 100, "C": -100, "D": -100})
         assert a == [Payment("C", "A", 100), Payment("D", "B", 100)]
 
-    @given(st.lists(st.integers(-10**8, 10**8), min_size=1, max_size=15))
+    @given(st.lists(st.integers(-(10**8), 10**8), min_size=1, max_size=15))
     def test_property_settles_in_at_most_n_minus_1(self, values):
         balances = {i: v for i, v in enumerate(values)}
         balances[len(values)] = -sum(values)  # force zero-sum

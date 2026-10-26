@@ -103,8 +103,9 @@ class TestModels:
         session.add(e)
         session.commit()
         session.add(m.ExpenseShare(expense_id=e.id, member_id=b.id, share_paise=50000))
-        session.add(m.Settlement(group_id=g.id, from_member_id=b.id, to_member_id=a.id,
-                                 amount_paise=50000))
+        session.add(
+            m.Settlement(group_id=g.id, from_member_id=b.id, to_member_id=a.id, amount_paise=50000)
+        )
         session.commit()
         assert session.exec(select(m.Settlement)).one().status == m.SettlementStatus.CONFIRMED
 
