@@ -1,0 +1,13 @@
+[
+  {"name": "Food", "icon": "🍛"},
+  {"name": "Groceries", "icon": "🛒"},
+  {"name": "Rent", "icon": "🏠"},
+  {"name": "Fuel", "icon": "⛽"},
+  {"name": "Travel", "icon": "🚕"},
+  {"name": "Bills", "icon": "💡"},
+  {"name": "Shopping", "icon": "🛍️"},
+  {"name": "Entertainment", "icon": "🎬"},
+  {"name": "Health", "icon": "💊"},
+  {"name": "Transfers", "icon": "🔁"},
+  {"name": "Other", "icon": "📦"}
+]
