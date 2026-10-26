@@ -88,6 +88,13 @@ class Pipeline:
         return results
 
 
+def default_pipeline(categorizer: Categorizer | None = None, **kwargs) -> Pipeline:
+    """Pipeline with every bundled bank plugin."""
+    from hisaab.parsers.banks import discover
+
+    return Pipeline(banks=discover(), categorizer=categorizer or Categorizer(), **kwargs)
+
+
 def summarize(results: Iterable[ParseResult]) -> dict[str, int]:
     """Count results by status, for the Import tab."""
     counts = {s.value: 0 for s in ResultStatus}
