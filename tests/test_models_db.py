@@ -77,6 +77,12 @@ class TestSessionScope:
 
 
 class TestModels:
+    def test_string_enums_keep_string_behavior(self):
+        assert str(m.Source.PASTE) == "paste"
+        assert f"{m.GroupKind.TRIP}" == "trip"
+        assert m.Source.PASTE == "paste"
+        assert m.Source.PASTE.value == "paste"
+
     def test_alias_list(self):
         mem = m.Member(group_id=1, name="Rahul", aliases="RAHUL KUM, R KUMAR,,")
         assert mem.alias_list() == ["RAHUL KUM", "R KUMAR"]

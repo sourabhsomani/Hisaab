@@ -3,11 +3,12 @@
 from __future__ import annotations
 
 from datetime import datetime
-from enum import StrEnum
 from typing import Any
 
 from sqlalchemy import DateTime
 from sqlmodel import Field, SQLModel
+
+from hisaab.core.enums import StrEnum
 
 
 def now() -> datetime:

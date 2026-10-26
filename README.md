@@ -9,7 +9,7 @@ never sends your financial data anywhere.
 
 [![CI](https://github.com/sourabhsomani/hisaab/actions/workflows/ci.yml/badge.svg)](.github/workflows/ci.yml)
 ![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue)
-![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)
+![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue)
 
 ## The loop no other app closes
 
@@ -102,7 +102,7 @@ Details in [docs/architecture.md](docs/architecture.md).
   balance reaches zero in at most n − 1 payments).
 - Each bank plugin has anonymized fixtures with expected fields, a test that it never claims
   another bank's SMS, and a test that fixtures still parse after `hisaab anonymize`.
-- CI runs ruff and pytest on Python 3.11–3.13 and posts the parser accuracy table.
+- CI runs ruff and pytest on Python 3.10–3.13 and posts the parser accuracy table.
 
 The current fixture corpus has 32 labelled SMS (100% field accuracy) plus 9 negatives. The v1
 goal is 500 real, anonymized messages — contributions are very welcome.
