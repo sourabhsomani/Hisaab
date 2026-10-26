@@ -1,0 +1,31 @@
+{
+  "bank": "kotak",
+  "messages": [
+    {
+      "sender": "AX-KOTAKB",
+      "body": "Sent Rs.300.00 from Kotak Bank AC X4567 to amit@ybl on 23-10-26.UPI Ref 429822223333. Not you, https://kotak.com/KBANKT/Fraud",
+      "expected": {
+        "direction": "debit",
+        "amount_paise": 30000,
+        "account_tail": "4567",
+        "counterparty_name": null,
+        "counterparty_vpa": "amit@ybl",
+        "upi_ref": "429822223333",
+        "txn_at": "2026-10-23T00:00:00"
+      }
+    },
+    {
+      "sender": "AX-KOTAKB",
+      "body": "Received Rs.300.00 in your Kotak Bank AC X4567 from priya@okhdfcbank on 23-10-26.UPI Ref:429822224444.",
+      "expected": {
+        "direction": "credit",
+        "amount_paise": 30000,
+        "account_tail": "4567",
+        "counterparty_name": null,
+        "counterparty_vpa": "priya@okhdfcbank",
+        "upi_ref": "429822224444",
+        "txn_at": "2026-10-23T00:00:00"
+      }
+    }
+  ]
+}

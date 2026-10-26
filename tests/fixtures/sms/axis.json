@@ -1,0 +1,44 @@
+{
+  "bank": "axis",
+  "messages": [
+    {
+      "sender": "AX-AXISBK",
+      "body": "INR 600.00 debited A/c no. XX7788 23-10-26 19:02:11 UPI/P2A/429811112222/PRIYA SHARMA Not you? SMS BLOCKUPI Cust ID to 919951860002 Axis Bank",
+      "expected": {
+        "direction": "debit",
+        "amount_paise": 60000,
+        "account_tail": "7788",
+        "counterparty_name": "PRIYA SHARMA",
+        "counterparty_vpa": null,
+        "upi_ref": "429811112222",
+        "txn_at": "2026-10-23T19:02:11"
+      }
+    },
+    {
+      "sender": "AX-AXISBK",
+      "body": "INR 600.00 credited A/c no. XX7788 23-10-26 19:05:00 UPI/P2A/429811113333/AMIT VERMA Axis Bank",
+      "expected": {
+        "direction": "credit",
+        "amount_paise": 60000,
+        "account_tail": "7788",
+        "counterparty_name": "AMIT VERMA",
+        "counterparty_vpa": null,
+        "upi_ref": "429811113333",
+        "txn_at": "2026-10-23T19:05:00"
+      }
+    },
+    {
+      "sender": "VM-AXISBK",
+      "body": "Debit INR 349.00 A/c no. XX7788 24-10-26 08:15:42 UPI/P2M/429811114444/BLINKIT Not you? SMS BLOCKUPI Cust ID to 919951860002 Axis Bank",
+      "expected": {
+        "direction": "debit",
+        "amount_paise": 34900,
+        "account_tail": "7788",
+        "counterparty_name": "BLINKIT",
+        "counterparty_vpa": null,
+        "upi_ref": "429811114444",
+        "txn_at": "2026-10-24T08:15:42"
+      }
+    }
+  ]
+}

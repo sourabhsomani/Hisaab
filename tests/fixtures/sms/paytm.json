@@ -1,0 +1,44 @@
+{
+  "bank": "paytm",
+  "messages": [
+    {
+      "sender": "VM-PAYTMB",
+      "body": "Paid Rs.85 to Chai Point from Paytm Payments Bank a/c XX9900. UPI Ref:429888881111. For queries visit paytm.com/care",
+      "expected": {
+        "direction": "debit",
+        "amount_paise": 8500,
+        "account_tail": "9900",
+        "counterparty_name": "Chai Point",
+        "counterparty_vpa": null,
+        "upi_ref": "429888881111",
+        "txn_at": null
+      }
+    },
+    {
+      "sender": "VM-PAYTMB",
+      "body": "Received Rs.450 in your a/c XX9900 from RAHUL KUMAR. UPI Ref: 429888882222 -PPBL",
+      "expected": {
+        "direction": "credit",
+        "amount_paise": 45000,
+        "account_tail": "9900",
+        "counterparty_name": "RAHUL KUMAR",
+        "counterparty_vpa": null,
+        "upi_ref": "429888882222",
+        "txn_at": null
+      }
+    },
+    {
+      "sender": "JD-IPAYTM",
+      "body": "You paid Rs.450.00 to RAHUL KUMAR. UPI Ref No 429812345678",
+      "expected": {
+        "direction": "debit",
+        "amount_paise": 45000,
+        "account_tail": null,
+        "counterparty_name": "RAHUL KUMAR",
+        "counterparty_vpa": null,
+        "upi_ref": "429812345678",
+        "txn_at": null
+      }
+    }
+  ]
+}

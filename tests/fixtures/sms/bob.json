@@ -1,0 +1,31 @@
+{
+  "bank": "bob",
+  "messages": [
+    {
+      "sender": "AX-BOBTXN",
+      "body": "Rs.700.00 transferred from A/c ...6655 to:UPI/429844447777. Total Bal:Rs.3,000.00CR. Avlbl Amt:Rs.3,000.00(25-10-2026 14:02:11) - Bank of Baroda",
+      "expected": {
+        "direction": "debit",
+        "amount_paise": 70000,
+        "account_tail": "6655",
+        "counterparty_name": null,
+        "counterparty_vpa": null,
+        "upi_ref": "429844447777",
+        "txn_at": "2026-10-25T14:02:11"
+      }
+    },
+    {
+      "sender": "AX-BOBTXN",
+      "body": "Rs.700.00 Credited to A/c ...6655 thru UPI/429844448888 by rahul@okaxis. Total Bal:Rs.3,700.00CR. Avlbl Amt:Rs.3,700.00(25-10-2026 15:00:00) - Bank of Baroda",
+      "expected": {
+        "direction": "credit",
+        "amount_paise": 70000,
+        "account_tail": "6655",
+        "counterparty_name": null,
+        "counterparty_vpa": "rahul@okaxis",
+        "upi_ref": "429844448888",
+        "txn_at": "2026-10-25T15:00:00"
+      }
+    }
+  ]
+}

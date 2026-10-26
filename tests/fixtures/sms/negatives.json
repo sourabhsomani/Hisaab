@@ -1,0 +1,47 @@
+[
+  {
+    "sender": "AX-HDFCBK",
+    "body": "123456 is the OTP for your txn of Rs.500.00 at AMAZON. Do not share it with anyone.",
+    "reason": "otp"
+  },
+  {
+    "sender": "JD-SBIUPI",
+    "body": "Your UPI transaction of Rs.300 to ZOMATO failed. Amount if debited will be refunded.",
+    "reason": "failed"
+  },
+  {
+    "sender": "VM-PAYTMB",
+    "body": "RAHUL KUMAR has requested money Rs.250 from you. Pay on Paytm app.",
+    "reason": "request"
+  },
+  {
+    "sender": "AX-ICICIB",
+    "body": "UPI Mandate created successfully for NETFLIX of Rs 649.00 monthly.",
+    "reason": "mandate"
+  },
+  {
+    "sender": "AX-HDFCBK",
+    "body": "Your HDFC Bank Credit Card bill of Rs.4,500.00 is due on 05-11-26. Min amt due Rs.450",
+    "reason": "reminder"
+  },
+  {
+    "sender": "VM-KOTAKB",
+    "body": "Pre-approved personal loan of Rs.5,00,000 credited instantly! Apply now.",
+    "reason": "promo"
+  },
+  {
+    "sender": "AX-AXISBK",
+    "body": "Transaction of INR 999.00 declined on Card XX4455 due to insufficient balance.",
+    "reason": "failed"
+  },
+  {
+    "sender": "AX-CANBNK",
+    "body": "Welcome to Canara Bank mobile banking. Your registration is complete.",
+    "reason": "no_transaction"
+  },
+  {
+    "sender": "+919876543210",
+    "body": "Bhai 500 bhej de, Rs.500 sent kar dena",
+    "reason": "not_bank_sender"
+  }
+]

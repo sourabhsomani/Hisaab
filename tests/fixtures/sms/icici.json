@@ -1,0 +1,57 @@
+{
+  "bank": "icici",
+  "messages": [
+    {
+      "sender": "AX-ICICIB",
+      "body": "ICICI Bank Acct XX321 debited for Rs 1200.00 on 21-Oct-26; ZOMATO credited. UPI:529812345671. Call 18002662 for dispute. SMS BLOCK 321 to 9215676766.",
+      "expected": {
+        "direction": "debit",
+        "amount_paise": 120000,
+        "account_tail": "321",
+        "counterparty_name": "ZOMATO",
+        "counterparty_vpa": null,
+        "upi_ref": "529812345671",
+        "txn_at": "2026-10-21T00:00:00"
+      }
+    },
+    {
+      "sender": "VM-ICICIT",
+      "body": "Dear Customer, Acct XX321 is credited with Rs 450.00 on 25-Oct-26 from RAHUL KUMAR. UPI:529987654321-ICICI Bank.",
+      "expected": {
+        "direction": "credit",
+        "amount_paise": 45000,
+        "account_tail": "321",
+        "counterparty_name": "RAHUL KUMAR",
+        "counterparty_vpa": null,
+        "upi_ref": "529987654321",
+        "txn_at": "2026-10-25T00:00:00"
+      }
+    },
+    {
+      "sender": "AX-ICICIB",
+      "body": "INR 999.00 spent using ICICI Bank Card XX4455 on 22-Oct-26 on AMAZON. Avl Limit: INR 45,000.00. If not you, call 1800 2662/SMS BLOCK 4455 to 9215676766",
+      "expected": {
+        "direction": "debit",
+        "amount_paise": 99900,
+        "account_tail": "4455",
+        "counterparty_name": null,
+        "counterparty_vpa": null,
+        "upi_ref": null,
+        "txn_at": "2026-10-22T00:00:00"
+      }
+    },
+    {
+      "sender": "AX-ICICIB",
+      "body": "ICICI Bank Acct XX321 debited for Rs 75.00 on 23-Oct-26; SHARMA TEA STALL credited. UPI:529800005555. Call 18002662 for dispute.",
+      "expected": {
+        "direction": "debit",
+        "amount_paise": 7500,
+        "account_tail": "321",
+        "counterparty_name": "SHARMA TEA STALL",
+        "counterparty_vpa": null,
+        "upi_ref": "529800005555",
+        "txn_at": "2026-10-23T00:00:00"
+      }
+    }
+  ]
+}

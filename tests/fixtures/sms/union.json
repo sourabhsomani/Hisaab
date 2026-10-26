@@ -1,0 +1,31 @@
+{
+  "bank": "union",
+  "messages": [
+    {
+      "sender": "AX-UNIONB",
+      "body": "A/c *3344 Debited for Rs:120.00 on 23-10-2026 19:20:11 by Mob Bk ref no 429866661111 Avl Bal Rs:880.00.If not you, Call 1800222243 -Union Bank of India",
+      "expected": {
+        "direction": "debit",
+        "amount_paise": 12000,
+        "account_tail": "3344",
+        "counterparty_name": null,
+        "counterparty_vpa": null,
+        "upi_ref": "429866661111",
+        "txn_at": "2026-10-23T19:20:11"
+      }
+    },
+    {
+      "sender": "AX-UNIONB",
+      "body": "A/c *3344 Credited for Rs:120.00 on 23-10-2026 19:21:11 by Mob Bk ref no 429866662222 Avl Bal Rs:1000.00 -Union Bank of India",
+      "expected": {
+        "direction": "credit",
+        "amount_paise": 12000,
+        "account_tail": "3344",
+        "counterparty_name": null,
+        "counterparty_vpa": null,
+        "upi_ref": "429866662222",
+        "txn_at": "2026-10-23T19:21:11"
+      }
+    }
+  ]
+}

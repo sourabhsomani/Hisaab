@@ -1,0 +1,31 @@
+{
+  "bank": "pnb",
+  "messages": [
+    {
+      "sender": "AX-PNBSMS",
+      "body": "A/c XX8899 debited INR 500.00 Dt 22-10-26 thru UPI:429833335555. Bal INR 2,000.00 Not u?Fwd this SMS to 9264092640 to block UPI.-PNB",
+      "expected": {
+        "direction": "debit",
+        "amount_paise": 50000,
+        "account_tail": "8899",
+        "counterparty_name": null,
+        "counterparty_vpa": null,
+        "upi_ref": "429833335555",
+        "txn_at": "2026-10-22T00:00:00"
+      }
+    },
+    {
+      "sender": "AX-PNBSMS",
+      "body": "A/c XX8899 credited INR 500.00 Dt 22-10-26 thru UPI:429833336666 Bal INR 2,500.00 -PNB",
+      "expected": {
+        "direction": "credit",
+        "amount_paise": 50000,
+        "account_tail": "8899",
+        "counterparty_name": null,
+        "counterparty_vpa": null,
+        "upi_ref": "429833336666",
+        "txn_at": "2026-10-22T00:00:00"
+      }
+    }
+  ]
+}
