@@ -34,6 +34,12 @@ class TestGroups:
         me = g.get_me(session, grp.id)
         assert me.is_me and me.name == "Me"
 
+    def test_create_with_owner_vpa(self, session):
+        grp = g.create_group(session, "Trip", me="Sourabh", me_vpa=" me@okicici ")
+        assert g.get_me(session, grp.id).upi_vpa == "me@okicici"
+        with pytest.raises(ValueError, match="invalid UPI"):
+            g.create_group(session, "Trip", me_vpa="nope")
+
     def test_create_validates(self, session):
         with pytest.raises(ValueError):
             g.create_group(session, "  ")
@@ -88,6 +94,8 @@ class TestMembers:
         assert priya.upi_vpa == "priya@ybl" and priya.aliases == "PRIYA S"
         with pytest.raises(ValueError):
             g.update_member(session, priya.id, upi_vpa="bad")
+        g.update_member(session, priya.id, upi_vpa="  ")
+        assert priya.upi_vpa is None
         with pytest.raises(LookupError):
             g.update_member(session, 999, name="x")
 
@@ -293,6 +301,14 @@ class TestSharing:
         assert params["pa"] == "rahul@okaxis" and params["tn"] == "Hisaab Goa trip"
         text = g.group_summary(session, grp.id)
         assert "*Hisaab · Goa trip*" in text and "upi://pay" in text
+
+    def test_owner_gets_qr_links(self, session):
+        grp = g.create_group(session, "Flat", me_vpa="me@okicici")
+        me = g.get_me(session, grp.id)
+        roomie = g.add_member(session, grp.id, "Kabir")
+        g.add_expense(session, grp.id, "Wi-Fi", 100000, me.id, [me.id, roomie.id])
+        (line,) = g.payment_lines(session, grp.id)
+        assert parse_upi_link(line.link)["pa"] == "me@okicici"
 
     def test_no_link_without_vpa(self, session, trip):
         grp, me, rahul, priya = trip

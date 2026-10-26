@@ -18,16 +18,26 @@ from hisaab.services.importing import to_parsed
 
 
 def create_group(
-    session: Session, name: str, kind: m.GroupKind | str = m.GroupKind.OTHER, me: str = "Me"
+    session: Session,
+    name: str,
+    kind: m.GroupKind | str = m.GroupKind.OTHER,
+    me: str = "Me",
+    me_vpa: str | None = None,
 ) -> m.Group:
-    """Create a group with the owner as its first member."""
+    """Create a group with the owner as its first member.
+
+    ``me_vpa`` is the owner's UPI ID, used in the QR codes friends scan to pay them back.
+    """
     name = name.strip()
     if not name:
         raise ValueError("group name is empty")
+    vpa = (me_vpa or "").strip() or None
+    if vpa and not is_valid_vpa(vpa):
+        raise ValueError(f"invalid UPI ID: {vpa}")
     group = m.Group(name=name, kind=m.GroupKind(kind))
     session.add(group)
     session.flush()
-    session.add(m.Member(group_id=group.id, name=me, is_me=True))
+    session.add(m.Member(group_id=group.id, name=me, is_me=True, upi_vpa=vpa))
     session.commit()
     return group
 
@@ -80,6 +90,8 @@ def update_member(session: Session, member_id: int, **changes) -> m.Member:
     member = session.get(m.Member, member_id)
     if member is None:
         raise LookupError(f"member {member_id} not found")
+    if "upi_vpa" in changes:
+        changes["upi_vpa"] = (changes["upi_vpa"] or "").strip() or None
     if changes.get("upi_vpa") and not is_valid_vpa(changes["upi_vpa"]):
         raise ValueError(f"invalid UPI ID: {changes['upi_vpa']}")
     for key in ("name", "upi_vpa", "phone", "aliases"):
