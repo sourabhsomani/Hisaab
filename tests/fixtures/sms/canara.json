@@ -1,0 +1,31 @@
+{
+  "bank": "canara",
+  "messages": [
+    {
+      "sender": "AX-CANBNK",
+      "body": "An amount of INR 350.00 has been DEBITED to your account XXX1122 on 24/10/2026 towards UPI/429855559999/Swiggy. Total Avail.bal INR 1,200.00. - Canara Bank",
+      "expected": {
+        "direction": "debit",
+        "amount_paise": 35000,
+        "account_tail": "1122",
+        "counterparty_name": "Swiggy",
+        "counterparty_vpa": null,
+        "upi_ref": "429855559999",
+        "txn_at": "2026-10-24T00:00:00"
+      }
+    },
+    {
+      "sender": "AX-CANBNK",
+      "body": "An amount of INR 350.00 has been CREDITED to your account XXX1122 on 24/10/2026 towards UPI/429855550000/PRIYA SHARMA. Total Avail.bal INR 1,550.00 - Canara Bank",
+      "expected": {
+        "direction": "credit",
+        "amount_paise": 35000,
+        "account_tail": "1122",
+        "counterparty_name": "PRIYA SHARMA",
+        "counterparty_vpa": null,
+        "upi_ref": "429855550000",
+        "txn_at": "2026-10-24T00:00:00"
+      }
+    }
+  ]
+}

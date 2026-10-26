@@ -1,0 +1,70 @@
+{
+  "bank": "sbi",
+  "messages": [
+    {
+      "sender": "JD-SBIUPI",
+      "body": "Dear UPI user A/C X5678 debited by 450.0 on date 24Oct26 trf to RAHUL KUMAR Refno 429812340000. If not u? call 1800111109. -SBI",
+      "expected": {
+        "direction": "debit",
+        "amount_paise": 45000,
+        "account_tail": "5678",
+        "counterparty_name": "RAHUL KUMAR",
+        "counterparty_vpa": null,
+        "upi_ref": "429812340000",
+        "txn_at": "2026-10-24T00:00:00"
+      }
+    },
+    {
+      "sender": "JD-SBIUPI",
+      "body": "Dear UPI user A/C X5678 credited by 450.00 on date 25Oct26 trf to RAHUL KUMAR Refno 429987654321 -SBI",
+      "expected": {
+        "direction": "credit",
+        "amount_paise": 45000,
+        "account_tail": "5678",
+        "counterparty_name": "RAHUL KUMAR",
+        "counterparty_vpa": null,
+        "upi_ref": "429987654321",
+        "txn_at": "2026-10-25T00:00:00"
+      }
+    },
+    {
+      "sender": "AX-SBIINB",
+      "body": "Dear SBI UPI User, ur A/cX5678 credited by Rs600 on 23Oct26 by (Ref no 429800003333)",
+      "expected": {
+        "direction": "credit",
+        "amount_paise": 60000,
+        "account_tail": "5678",
+        "counterparty_name": null,
+        "counterparty_vpa": null,
+        "upi_ref": "429800003333",
+        "txn_at": "2026-10-23T00:00:00"
+      }
+    },
+    {
+      "sender": "VM-SBIPSG",
+      "body": "Your A/C XXXXX5678 Credited INR 1,000.00 on 25/10/26 -Deposit by transfer from PRIYA SHARMA. Avl Bal INR 5,000.00-SBI",
+      "expected": {
+        "direction": "credit",
+        "amount_paise": 100000,
+        "account_tail": "5678",
+        "counterparty_name": "PRIYA SHARMA",
+        "counterparty_vpa": null,
+        "upi_ref": null,
+        "txn_at": "2026-10-25T00:00:00"
+      }
+    },
+    {
+      "sender": "JD-SBIUPI",
+      "body": "Dear UPI user A/C X5678 debited by 1200.00 on date 02Nov26 trf to ZOMATO LTD Refno 429800004444. If not u? call 1800111109. -SBI",
+      "expected": {
+        "direction": "debit",
+        "amount_paise": 120000,
+        "account_tail": "5678",
+        "counterparty_name": "ZOMATO LTD",
+        "counterparty_vpa": null,
+        "upi_ref": "429800004444",
+        "txn_at": "2026-11-02T00:00:00"
+      }
+    }
+  ]
+}

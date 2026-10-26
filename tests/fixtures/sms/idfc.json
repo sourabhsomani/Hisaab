@@ -1,0 +1,31 @@
+{
+  "bank": "idfc",
+  "messages": [
+    {
+      "sender": "AX-IDFCFB",
+      "body": "Your A/C XXXXXXX2211 is debited by INR 899.00 on 24/10/26 21:10. New Bal :INR 4,101.00. UPI Ref 429877771111 to netflix@ybl. -IDFC FIRST Bank",
+      "expected": {
+        "direction": "debit",
+        "amount_paise": 89900,
+        "account_tail": "2211",
+        "counterparty_name": null,
+        "counterparty_vpa": "netflix@ybl",
+        "upi_ref": "429877771111",
+        "txn_at": "2026-10-24T21:10:00"
+      }
+    },
+    {
+      "sender": "AX-IDFCFB",
+      "body": "Your A/C XXXXXXX2211 is credited by INR 1,500.00 on 25/10/26 10:00. New Bal :INR 5,601.00. UPI Ref 429877772222 from rahul@okaxis. -IDFC FIRST Bank",
+      "expected": {
+        "direction": "credit",
+        "amount_paise": 150000,
+        "account_tail": "2211",
+        "counterparty_name": null,
+        "counterparty_vpa": "rahul@okaxis",
+        "upi_ref": "429877772222",
+        "txn_at": "2026-10-25T10:00:00"
+      }
+    }
+  ]
+}
