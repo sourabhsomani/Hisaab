@@ -1,4 +1,4 @@
-"""Fixture tests: every anonymized SMS has an expected output; amount and direction must be exact."""
+"""Fixture tests: every anonymized SMS has expected output; amount and direction must be exact."""
 
 import importlib
 import json
